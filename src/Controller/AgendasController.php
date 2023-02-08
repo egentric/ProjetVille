@@ -20,6 +20,7 @@ class AgendasController extends AbstractController
             'agendas' => $agendasRepository->findAll(),
         ]);
     }
+    
     #[Route('/agendasIndex', name: 'agendas_index', methods: ['GET'])]
     public function agendasIndex(AgendasRepository $agendasRepository): Response
     {
