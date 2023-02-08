@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Agendas{% endblock %}
+
+{% block body %}
+    <h1>Create new Agendas</h1>
+
+    {{ include('agendas/_form.html.twig') }}
+
+    <a href="{{ path('app_agendas_index') }}">back to list</a>
+{% endblock %}
