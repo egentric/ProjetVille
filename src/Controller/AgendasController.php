@@ -20,7 +20,13 @@ class AgendasController extends AbstractController
             'agendas' => $agendasRepository->findAll(),
         ]);
     }
-
+    #[Route('/agendasIndex', name: 'agendas_index', methods: ['GET'])]
+    public function agendasIndex(AgendasRepository $agendasRepository): Response
+    {
+        return $this->render('agendas/agendasIndex.html.twig', [
+            'agendas' => $agendasRepository->findAll(),
+        ]);
+    }
     #[Route('/new', name: 'app_agendas_new', methods: ['GET', 'POST'])]
     public function new(Request $request, AgendasRepository $agendasRepository): Response
     {

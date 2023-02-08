@@ -21,6 +21,7 @@ class ContactsController extends AbstractController
         ]);
     }
 
+
     #[Route('/new', name: 'app_contacts_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ContactsRepository $contactsRepository): Response
     {

@@ -21,6 +21,14 @@ class HistoryController extends AbstractController
         ]);
     }
 
+    #[Route('/historyIndex', name: 'history_index', methods: ['GET'])]
+    public function historyIndex(HistoryRepository $historyRepository): Response
+    {
+        return $this->render('history/historyIndex.html.twig', [
+            'histories' => $historyRepository->findAll(),
+        ]);
+    }
+
     #[Route('/new', name: 'app_history_new', methods: ['GET', 'POST'])]
     public function new(Request $request, HistoryRepository $historyRepository): Response
     {
