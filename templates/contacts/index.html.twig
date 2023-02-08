@@ -26,7 +26,7 @@
                 <td>{{ contact.createDate ? contact.createDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_contacts_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('app_contacts_edit', {'id': contact.id}) }}">edit</a>
+                    {# <a href="{{ path('app_contacts_edit', {'id': contact.id}) }}">edit</a> #}
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_contacts_new') }}">Create new</a>
+    {# <a href="{{ path('app_contacts_new') }}">Create new</a> #}
 {% endblock %}

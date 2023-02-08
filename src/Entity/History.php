@@ -21,7 +21,12 @@ class History
     private ?string $content = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $createDate = null;
+    private ?\DateTime $createDate = null;
+
+    public function __construct()
+    {
+        $this->createDate = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -52,15 +57,17 @@ class History
         return $this;
     }
 
+
+
     public function getCreateDate(): ?\DateTimeInterface
     {
         return $this->createDate;
     }
 
-    public function setCreateDate(\DateTimeInterface $createDate): self
-    {
-        $this->createDate = $createDate;
+//     public function setCreateDate(\DateTime $createDate): self
+//    {
+//         $this->createDate = $createDate;
 
-        return $this;
-    }
+//         return $this;
+//     }
 }

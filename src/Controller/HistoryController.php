@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 #[Route('/history')]
 class HistoryController extends AbstractController
@@ -42,6 +43,7 @@ class HistoryController extends AbstractController
             return $this->redirectToRoute('app_history_index', [], Response::HTTP_SEE_OTHER);
         }
 
+
         return $this->renderForm('history/new.html.twig', [
             'history' => $history,
             'form' => $form,
@@ -64,6 +66,7 @@ class HistoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $historyRepository->save($history, true);
+
 
             return $this->redirectToRoute('app_history_index', [], Response::HTTP_SEE_OTHER);
         }

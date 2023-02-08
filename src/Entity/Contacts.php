@@ -24,7 +24,13 @@ class Contacts
     private ?string $message = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $createDate = null;
+    private ?\DateTime $createDate = null;
+
+    public function __construct()
+    {
+        $this->createDate = new \DateTime();
+    }
+
 
     public function getId(): ?int
     {

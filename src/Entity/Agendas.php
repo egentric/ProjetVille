@@ -27,7 +27,12 @@ class Agendas
     private ?string $content = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $createDate = null;
+    private ?\DateTime $createDate = null;
+
+    public function __construct()
+    {
+        $this->createDate = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -87,10 +92,10 @@ class Agendas
         return $this->createDate;
     }
 
-    public function setCreateDate(\DateTimeInterface $createDate): self
-    {
-        $this->createDate = $createDate;
+    // public function setCreateDate(\DateTimeInterface $createDate): self
+    // {
+    //     $this->createDate = $createDate;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

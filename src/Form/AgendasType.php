@@ -16,7 +16,7 @@ class AgendasType extends AbstractType
             ->add('date')
             ->add('place')
             ->add('content')
-            ->add('createDate')
+            // ->add('createDate')
         ;
     }
 
