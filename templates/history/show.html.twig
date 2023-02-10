@@ -19,10 +19,10 @@
                 <th>Content</th>
                 <td>{{ history.content }}</td>
             </tr>
-            {# <tr>
-                <th>Date</th>
-                <td>{{ history.createDate }}</td>
-            </tr> #}
+			<tr>
+				<th>CreateDate</th>
+				<td>{{ history.createDate ? history.createDate|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
         </tbody>
     </table>
 

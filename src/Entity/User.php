@@ -44,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     { 
         $this->roles = [self::ROLE_USER]; 
         $this->createDate = new \DateTime();
-        $this->editDate = new \DateTime();
+
     }
 
     public function getId(): ?int

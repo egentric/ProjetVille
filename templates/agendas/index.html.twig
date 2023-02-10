@@ -8,24 +8,24 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                {# <th>Id</th> #}
                 <th>Title</th>
                 <th>Date</th>
                 <th>Place</th>
                 <th>Content</th>
-                <th>CreateDate</th>
+                {# <th>CreateDate</th> #}
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for agenda in agendas %}
             <tr>
-                <td>{{ agenda.id }}</td>
+                {# <td>{{ agenda.id }}</td> #}
                 <td>{{ agenda.title }}</td>
                 <td>{{ agenda.date }}</td>
                 <td>{{ agenda.place }}</td>
                 <td>{{ agenda.content }}</td>
-                <td>{{ agenda.createDate ? agenda.createDate|date('Y-m-d H:i:s') : '' }}</td>
+                {# <td>{{ agenda.createDate ? agenda.createDate|date('Y-m-d H:i:s') : '' }}</td> #}
                 <td>
                     <a href="{{ path('app_agendas_show', {'id': agenda.id}) }}">show</a>
                     <a href="{{ path('app_agendas_edit', {'id': agenda.id}) }}">edit</a>
