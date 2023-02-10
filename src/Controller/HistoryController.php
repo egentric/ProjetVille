@@ -10,11 +10,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 #[Route('/history')]
 class HistoryController extends AbstractController
 {
     #[Route('/', name: 'app_history_index', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+
     public function index(HistoryRepository $historyRepository): Response
     {
         return $this->render('history/index.html.twig', [
@@ -31,6 +35,8 @@ class HistoryController extends AbstractController
     }
 
     #[Route('/new', name: 'app_history_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+
     public function new(Request $request, HistoryRepository $historyRepository): Response
     {
         $history = new History();
@@ -51,6 +57,8 @@ class HistoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_history_show', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+
     public function show(History $history): Response
     {
         return $this->render('history/show.html.twig', [
@@ -78,6 +86,8 @@ class HistoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_history_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+
     public function delete(Request $request, History $history, HistoryRepository $historyRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$history->getId(), $request->request->get('_token'))) {

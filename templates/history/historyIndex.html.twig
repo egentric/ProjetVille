@@ -3,35 +3,12 @@
 {% block title %}History index{% endblock %}
 
 {% block body %}
-    <h1>History index</h1>
+    
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for history in histories %}
-            <tr>
-                <td>{{ history.id }}</td>
-                <td>{{ history.title }}</td>
-                <td>{{ history.content }}</td>
-                <td>
-                    <a href="{{ path('app_history_show', {'id': history.id}) }}">show</a>
-                    <a href="{{ path('app_history_edit', {'id': history.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+            <h1  align= center >{{ history.title }}</h1>
+             <p>{{ history.content }}</P>
+   
         {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_history_new') }}">Create new</a>
 {% endblock %}

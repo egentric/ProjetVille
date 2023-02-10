@@ -9,11 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 #[Route('/contacts')]
 class ContactsController extends AbstractController
 {
     #[Route('/', name: 'app_contacts_index', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+
     public function index(ContactsRepository $contactsRepository): Response
     {
         return $this->render('contacts/index.html.twig', [
@@ -23,6 +27,7 @@ class ContactsController extends AbstractController
 
 
     #[Route('/new', name: 'app_contacts_new', methods: ['GET', 'POST'])]
+
     public function new(Request $request, ContactsRepository $contactsRepository): Response
     {
         $contact = new Contacts();
@@ -42,6 +47,8 @@ class ContactsController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_contacts_show', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+
     public function show(Contacts $contact): Response
     {
         return $this->render('contacts/show.html.twig', [
@@ -50,6 +57,8 @@ class ContactsController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_contacts_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+
     public function edit(Request $request, Contacts $contact, ContactsRepository $contactsRepository): Response
     {
         $form = $this->createForm(ContactsType::class, $contact);
@@ -68,6 +77,8 @@ class ContactsController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_contacts_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+
     public function delete(Request $request, Contacts $contact, ContactsRepository $contactsRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$contact->getId(), $request->request->get('_token'))) {
